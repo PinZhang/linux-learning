@@ -1,0 +1,187 @@
+#Theme:
+#  Fallback to Gnome classic 
+#  You have to logout to choose gnome classic.
+sudo apt-get gnome-session-fallback
+
+# Input method：
+sudo apt-get install ibus
+
+#Image Editor： 
+#	GIMP Image Editor
+sudo apt-get install gimp
+
+#Dock：
+#	Cairo Dock
+sudo apt-get install cairo-dock
+
+#QQ： 
+#	Python WebQQ
+sudo apt-add-repository ppa:linux-deepin-team/linux-deepin 
+sudo apt-get update
+sudo apt-get install pywebqq
+# Software center may can not be opened after softwares are updated:
+#  ImportError: No module named LinuxDeepin
+# eidt /etc/lsb-release   replace content with:
+#  DISTRIB_ID=Ubuntu
+#  DISTRIB_RELEASE=11.10
+#  DISTRIB_CODENAME=oneiric
+#  DISTRIB_DESCRIPTION=“Ubuntu 11.10″
+
+#Fetion： 
+#	OpenFetion
+sudo apt-get install openfetion
+
+#Term: 
+#	QTerm
+sudo apt-get install qterm
+
+#IDE: 
+#	Eclipse + Aptana studio
+#        close all warnings for Error message
+sudo apt-get install eclipse
+
+#IRC:
+#	xchat irc
+sudo apt-get install xchat
+
+#Email:
+#	Thunderbird
+#HTTP Inspector:
+#	HttpFox, which is an firefox extension.
+
+# Download 
+# You can use the downthemall extension on firefox, or multiget
+# Of course you can install thunder based on wine
+# see: http://www.comflag.com/2011/05/18/xunlei.htm
+sudo dpkg -i wine-thunder_0.6-2_all.deb
+
+#Sourcecode control:
+#	Git
+sudo apt-get install git
+
+# VPN:
+#	OpenVPN
+# And you have to install network-manager-openvpn and resolvconf
+sudo apt-get install openvpn
+sudo apt-get install network-manager-openvpn resolvconf
+
+#	Wine & PlayOnLinux
+sudo apt-get install playonlinux
+
+#	Advanced settings (Unbuntu tweak)
+sudo apt-get install gnome-tweak-tool
+
+# Enviroment for python
+# PIP, an alternative of easy_install for python
+#	Develop:
+#  python-dev
+#  You have to compile MySqlDB sourcecode with python head files.
+sudo apt-get install python-dev
+#nginx
+sudo apt-get  install nginx
+# memcached
+sudo apt-get install memcached
+
+
+#others:
+#	GNOME DO
+sudo apt-get install gonome-do
+# Change software sources
+# Open Software sources, select best server automatically.
+
+
+# activemq
+# Download activemq from apache site
+# run command to setup env: 
+bin/activemq setup /etc/default/activemq
+
+# run command to start activemq
+bin/activemq starti
+
+# python mysql db
+# You need install libmysqlclient-dev first, or env error  "mysql_config no found"
+# see: http://stackoverflow.com/questions/7475223/mysql-config-not-found-when-installing-mysqldb-python-interface
+sudo apt-get install libmysqlclient-dev
+
+
+# turnoff bluetooth by default
+# edit /etc/rc.local, add script:
+rfkill block bluetooth
+
+# mount disk automatically
+sudo mount -t ntfs -o nls=utf8,umask=0222 /dev/sda1 /media/c
+sudo mount -t ntfs -o nls=utf8,umask=000 /dev/sda5 /media/d
+sudo mount -t ntfs -o nls=utf8,umask=000 /dev/sda6 /media/e
+
+# pysdm, Storage device manager
+sudo apt-get install pysdm
+
+# Show file/dir size
+du -sh workspace
+
+# Show file system usage
+df
+
+# Add Perm size for eclipse
+# edit eclipse.ini, add lines:
+-vmargs
+-XX:PermSize=512M
+-XX:MaxPermSize=512M 
+
+# To enable the flash sandbox security,
+# we need add absolute path of local swf files dir to ~/.macromedia/Flash_Player/#Security/FlashPlayerTrust/flexbuilder.cfg
+
+# Mount windows NTFS partition
+sudo mkdir /media/d
+sudo fdisk -l
+sudo fdisk -lh
+sudo mount -t ntfs -o nls=utf8,umask=0222 /dev/sda5 /media/d
+
+# install Micro Yahei fonts/top_level.txt'
+sudo mkdir /usr/share/fonts/msyh
+sudo cp msyh.ttf msyhbd.ttf /usr/share/fonts/msyh/
+sudo fc-cache -fv
+
+# Can not start software center
+# run software-center in an terminal, error occurs:
+#    IOError: [Errno 13] Permission denied: '/usr/local/lib/python2.7/dist-packages/django_haystack-1.2.6.egg-info
+# change mod of this kind of files:
+#    sudo chmod 644 /usr/local/lib/python2.7/dist-packages/*.egg-info/top_level.txt
+
+
+# Add sogou dictionary for ibus
+# see: http://b332.com/post/59
+wget -c http://hslinuxextra.googlecode.com/files/android.7z
+sudo apt-get install p7zip-full
+7z e android.7z
+sudo mv /usr/share/ibus-pinyin/db/android.db /usr/share/ibus-pinyin/db/android.db.bak
+sudo mv android.db /usr/share/ibus-pinyin/db/android.db
+
+# If you wanna some animation or theme, you maybe have to enable compositing
+# Install the xcompmgr, and add it as an startup application
+sudo apt-get install xcompmgr
+
+# In Ubuntu, menu icon is invisible by defalt, to set the icon visible, type command below:
+gconftool-2 --type Boolean --set /desktop/gnome/interface/menus_have_icons True
+
+
+# Switch display between displays
+# see: http://willem.engen.nl/projects/disper/
+# also: http://www.linux-depot.com/?p=projects&s=nvidia
+disper -s
+disper -S
+
+# Set gvimdiff as git diff tool
+# type "git d" to open difftool
+git config --global diff.tool gvimdiff
+git config --global difftool.prompt false
+git config --global alias.d difftool
+
+# Ubuntu always open new app window in the top left of the screen
+# You can install ccsm to change window position when app is opened.
+# Type ccsm to see the installation instruction.
+# see: https://www.techsupportalert.com/content/ubuntu-tips-and-tricks.htm#Open-Up-a-Program-Window-in-Center
+sudo apt-get install compizconfig-settings-manager
+
+# CUPs system, open source printing system developed by Apple Inc
+http://localhost:631/
